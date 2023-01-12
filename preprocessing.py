@@ -1,24 +1,12 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import re
 import nltk
 
-from nltk.tokenize import word_tokenize
-from nltk.tokenize import sent_tokenize
 nltk.download('punkt')
-from wordcloud import WordCloud
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
-from sklearn.metrics import make_scorer, roc_curve, roc_auc_score
-from sklearn.metrics import precision_recall_fscore_support as score
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.ensemble import RandomForestClassifier
+
 
 train = pd.read_csv("dataset/train.csv")
 
@@ -64,8 +52,17 @@ x = cv.fit_transform(train.content).toarray()
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state = 0, shuffle = True)
 
+splits = {
+    "x_train": x_train, 
+    "x_test": x_test, 
+    "y_train": y_train, 
+    "y_test": y_test
+}
 
-np.save()
+import pickle
+
+with open('data_splits.pkl', 'wb') as file:
+    pickle.dump(splits, file)
 
 
 
