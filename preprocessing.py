@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 
 
-train = pd.read_csv("dataset/train.csv")
+train = pd.read_csv("dataset/Train.csv")
 
 # Associate Category names with numerical index and save it in new column CategoryId
 target_category = train['category'].unique()
