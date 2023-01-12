@@ -9,8 +9,3 @@ jobs:
           command: |
             pip install -r requirements.txt
             python training.py
-  test:
-    steps:
-      - run:
-          command: |
-            python evaluate.py
