@@ -9,10 +9,10 @@ from sklearn.metrics import precision_recall_fscore_support as score
 
 with open('model.pkl', 'rb') as file:
     model = pickle.load(file)
-with open('x_test.pkl', 'rb') as file:
-    x_test = pickle.load(file)
-with open('y_test.pkl', 'rb') as file:
-    y_test = pickle.load(file)
+with open('data_splits.pkl', 'rb') as file:
+    data_splits = pickle.load(file)
+
+x_test, y_test = data_splits['x_test'], data_splits['y_test']
 
 y_pred = model.predict(x_test)
 
@@ -23,3 +23,10 @@ accuracy = round(accuracy_score(y_test, y_pred) * 100, 2)
 # Get precision, recall, f1 scores
 
 precision, recall, f1score, support = score(y_test, y_pred, average='micro')
+model_name = "Random Forest"
+print(f'Test Accuracy Score of Basic {model_name}: % {accuracy}')
+
+print(f'Precision : {precision}')
+print(f'Recall : {recall}')
+
+print(f'F1-score : {f1score}')
