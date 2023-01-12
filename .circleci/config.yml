@@ -1,0 +1,15 @@
+version: 2.1
+orbs:
+  python: circleci/python@3.9
+jobs:
+  build:
+    docker:
+    -  image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          command:  |
+            pip install -r requirements.txt
+          - run:
+              command: |
+                python training.py
