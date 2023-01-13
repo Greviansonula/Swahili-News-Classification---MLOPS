@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
-from keras.models import load_model
+import pickle
 
 app = Flask(__name__)
-model = load_model('swahili.h5')
+
+with open('model.pkl', 'rb') as file:
+  model = pickle.load(file)
 
 
 def preprocess_text():
