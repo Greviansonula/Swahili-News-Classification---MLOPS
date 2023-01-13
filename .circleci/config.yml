@@ -12,3 +12,4 @@ jobs:
             python preprocessing.py
             python training.py
             python evaluation.py
+            python app.py
